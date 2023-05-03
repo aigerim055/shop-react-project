@@ -13,7 +13,7 @@ export default function BasicRating(props) {
 		>
 			{
 				props.rating === 'read' ?
-					<Rating name="read-only" value={value} readOnly />
+					<Rating name="read-only" value={props.value} readOnly />
 					:
 					<Rating
 						name="simple-controlled"

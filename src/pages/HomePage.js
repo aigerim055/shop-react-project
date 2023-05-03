@@ -20,9 +20,13 @@ const HomePage = () => {
 			<Header/>
 			<div className={'container'}>
 				<div className="row">
-					<div className="col-4">
-						<ProductCard/>
-					</div>
+					{
+						products.map(product => (
+							<div key={product.id} className="col-4">
+								<ProductCard product={product}/>
+							</div>
+						))
+					}
 				</div>
 			</div>
 		</>
