@@ -1,19 +1,11 @@
 import React, {useEffect} from 'react';
 import Header from "../components/header";
 import ProductCard from "../components/productCard";
-import {useDispatch, useSelector} from "react-redux";
-import {getProducts} from "../redux/action/productAction";
+import {useSelector} from "react-redux";
 
 const HomePage = () => {
 	
-	const dispatch = useDispatch() // отправляет запрос
 	const products = useSelector(state => state.products) // получает данные
-	
-	console.log(products)
-	useEffect(() => {
-		dispatch(getProducts())
-	}, [])
-	
 	
 	return (
 		<>

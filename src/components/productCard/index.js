@@ -34,7 +34,7 @@ const ProductCard = ({product}) => {
 				<Box sx={cardOverlay}>
 					<ProductIcons/>
 					<Price discount={product.discount} old_price={product.price}/>
-					<BasicRating rating={''}/>
+					<BasicRating rating={''} value={product.rating}/>
 				</Box>
 			</Box>
 		</Box>
