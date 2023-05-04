@@ -1,11 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Box from "@mui/material/Box";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import {Button} from "@mui/material";
 
 const Header = () => {
 	return (
 		<div className={'container'}>
 			<header>
-				<div className="logo">
+				<Box>
 					<svg width="106" height="27" viewBox="0 0 106 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M36.7032 17.0762V18.7264H31V10.1848H32.9275V17.0762H36.7032Z" fill="#247CC0"/>
 						<path d="M37.9442 10.1848H39.8717V18.7264H37.9442V10.1848Z" fill="#247CC0"/>
@@ -41,21 +44,31 @@ const Header = () => {
 						<path d="M3.27871 19.2914C3.26479 19.2914 3.25086 19.2914 3.2439 19.2914C2.9585 19.2914 2.68701 19.2218 2.45033 19.1035C2.04659 19.73 1.67069 20.3773 1.32959 21.0387L4.28807 22.7511L3.27871 19.2914Z" fill="url(#paint7_linear_1_260)"/>
 						<path d="M19.1988 18.9852C18.809 18.9852 18.4609 18.839 18.1964 18.5953L14.4861 20.6489C14.5348 20.8299 14.5627 21.0178 14.5627 21.2127C14.5627 21.6095 14.4513 21.9854 14.2494 22.2987L16.1359 24.1851L21.7535 20.9412C21.7953 20.9134 21.844 20.8856 21.8858 20.8577L19.8601 18.832C19.6582 18.9295 19.4355 18.9852 19.1988 18.9852Z" fill="url(#paint8_linear_1_260)"/>
 					</svg>
-				</div>
+				</Box>
 				<nav>
 					<Link to={'/'}>home</Link>
-					<a href="#">product</a>
+					<Link to={'/'}>product</Link>
 				</nav>
-				<div className="header-profile">
-					<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="17.5" cy="17.5" r="17.5" fill="#F4F9FC"/>
-						<path d="M17.455 18.0121C12.6476 18.0121 10 20.2864 10 24.4161C10 24.7386 10.2614 25 10.5839 25H24.326C24.6486 25 24.91 24.7386 24.91 24.4161C24.91 20.2866 22.2624 18.0121 17.455 18.0121ZM11.1891 23.8321C11.4188 20.7444 13.5239 19.1801 17.455 19.1801C21.3861 19.1801 23.4912 20.7444 23.7211 23.8321H11.1891Z" fill="#030D15"/>
-						<path d="M17.455 9C15.2467 9 13.5815 10.6987 13.5815 12.9512C13.5815 15.2696 15.3192 17.1555 17.455 17.1555C19.5909 17.1555 21.3285 15.2696 21.3285 12.9513C21.3285 10.6987 19.6633 9 17.455 9ZM17.455 15.9878C15.963 15.9878 14.7494 14.6257 14.7494 12.9513C14.7494 11.3385 15.8873 10.1679 17.455 10.1679C18.9976 10.1679 20.1606 11.3644 20.1606 12.9513C20.1606 14.6257 18.947 15.9878 17.455 15.9878Z" fill="#030D15"/>
-					</svg>
-				</div>
+				<Box>
+					<Button sx={{
+						background: '#F4F9FC',
+						cursor: 'pointer',
+						borderRadius: '50px',
+						minWidth: '0',
+						padding: '10px'
+					}}>
+						<PersonOutlineIcon sx={profile}/>
+					</Button>
+				</Box>
 			</header>
-		</div>
+		</div >
 	);
 };
+
+const profile = {
+	color: '#000',
+}
+
+
 
 export default Header;

@@ -1,10 +1,14 @@
 import React from 'react';
+import {Typography} from "@mui/material";
 
 const Price = (props) => {
+	
+	const discount_price = Number(props.old_price) - (Number(props.old_price) / 100 * Number(props.discount))
+	
 	return (
 		<>
-			<p className={'card-discount-price'}>
-				$ {props.discount_price}
+			<Typography variant='h6' sx={cardDiscountPrice}>
+				$ {discount_price}
 				<span
 					style={{
 						color: '#030D15',
@@ -15,15 +19,20 @@ const Price = (props) => {
 					/
 				</span>
 				<span
-					style={{
-					
-					}}
 					className={'card-price'}>
 					 $ {props.old_price}
 				</span>
-			</p>
+			</Typography>
 		</>
 	);
 };
+
+const cardDiscountPrice = {
+	fontWeight: "500",
+	fontSize: "16px",
+	lineHeight: "27px",
+	color: "#030D15",
+	padding: '10px 0 '
+}
 
 export default Price;

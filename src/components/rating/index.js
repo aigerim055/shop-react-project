@@ -16,13 +16,13 @@ export default function BasicRating(props) {
 					<Rating name="read-only" value={props.value} readOnly />
 					:
 					<Rating
-						name="simple-controlled"
-						value={value}
-						onChange={(event, newValue) => {
-							setValue(newValue);
-						}}
+						// name="simple-controlled"
+						defaultValue={props.value}
+						value={props.value}
+						// onChange={(event, newValue) => {
+						// 	setValue(newValue);
+						// }}
 					/>
-				// if (props)
 			}
 		</Box>
 	);
