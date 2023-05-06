@@ -19,6 +19,15 @@ export const editRating = (value) => {
 	}
 }
 
+export const editFavorite = value => {
+	return (dispatch) => {
+		axios.put(`https://6450f7b2a32219691156b4da.mockapi.io/shop/products/${value.id}`, value)
+			.then(({data}) => {
+				dispatch({type: 'EDIT_FAVORITE', payload: data})
+			})
+	}
+}
+
 export const addToCart = (product) => {
 	return {type: 'ADD_TO_CART', payload: product}
 }

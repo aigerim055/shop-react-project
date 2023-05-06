@@ -10,6 +10,8 @@ export default  function ProductReducer( state = initialState, action ) {
 			return {...state, products: action.payload}
 		case 'EDIT_RATING':
 			return {...state, products: state.products.map(product => product.id === action.payload.id ? action.payload : product)}
+		case 'EDIT_FAVORITE':
+			return {...state, products: state.products.map(product => product.id === action.payload.id ? action.payload : product)}
 		case 'ADD_TO_CART':
 			return {...state, carts: [...state.carts, action.payload] }
 		case 'INCREASE_AMOUNT':

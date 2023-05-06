@@ -4,7 +4,9 @@ import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import {Button, Box} from "@mui/material";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import {useDispatch, useSelector} from "react-redux";
-import {addToCart, increaseAmount} from "../../redux/action/productAction";
+import {addToCart, editFavorite, increaseAmount} from "../../redux/action/productAction";
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+
 
 const ProductIcons = ({product}) => {
 	
@@ -20,23 +22,37 @@ const ProductIcons = ({product}) => {
 		}
 	}
 	
+	const handleEditFavorite = (object) => {
+		if (object.is_favorite) {
+			const new_value = {...object, is_favorite: false}
+			dispatch(editFavorite(new_value))
+		} else {
+			const new_value = {...object, is_favorite: true}
+			dispatch(editFavorite(new_value))
+		}
+	}
+	
 	
 	return (
 		<Box
 			sx={productButtons}
-			onClick={handleAddToCart}
 		>
-			<Button>
+			<Button onClick={handleAddToCart}>
 				<ShoppingCartOutlinedIcon sx={icon}/>
 			</Button>
 			<Button>
-				// хз что надо делать при нажатии на лупу, так что пусть будет так
+				{/*хз что надо делать при нажатии на лупу, так что пусть будет так*/}
 				<a href={product.img} target={"_blank"}>
 					<ZoomInIcon sx={icon} />
 				</a>
 			</Button>
-			<Button>
-				<FavoriteBorderIcon sx={icon}/>
+			<Button onClick={() => handleEditFavorite(product)}>
+				{
+					product.is_favorite ?
+						<FavoriteOutlinedIcon sx={{color: 'red', fontSize: 30}} />
+						 :
+						<FavoriteBorderIcon  sx={icon} />
+				}
 			</Button>
 		</Box>
 	);
