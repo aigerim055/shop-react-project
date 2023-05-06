@@ -1,10 +1,31 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Box from "@mui/material/Box";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import {Button} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import IconButton from "@mui/material/IconButton";
+import {styled} from "@mui/material/styles";
+import Badge from "@mui/material/Badge";
+import {useSelector} from "react-redux";
+
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+	'& .MuiBadge-badge': {
+		right: -2,
+		top: 5,
+		border: `2px solid #fff`,
+		padding: '0 1px',
+	},
+}));
+
 
 const Header = () => {
+	
+	const navigate = useNavigate()
+	const carts = useSelector(state => state.carts)
+	// console.log(carts)
+	
 	return (
 		<div className={'container'}>
 			<header>
@@ -50,13 +71,22 @@ const Header = () => {
 					<Link to={'/'}>product</Link>
 				</nav>
 				<Box>
+					<IconButton aria-label="cart"
+					            onClick={() => navigate('/cart')}
+					>
+						<StyledBadge badgeContent={carts.length} color="secondary">
+							<ShoppingCartIcon />
+						</StyledBadge>
+					</IconButton>
 					<Button sx={{
 						background: '#F4F9FC',
 						cursor: 'pointer',
 						borderRadius: '50px',
 						minWidth: '0',
-						padding: '10px'
-					}}>
+						padding: '7px',
+						marginLeft: '15px'
+					}}
+					>
 						<PersonOutlineIcon sx={profile}/>
 					</Button>
 				</Box>

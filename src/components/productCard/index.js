@@ -11,7 +11,9 @@ const ProductCard = ({product}) => {
 			<Box sx={card}>
 				<Box sx={{
 					padding: '35px'
-				}}>
+				}}
+					className={'cardDesc'}
+				>
 					<Box>
 						<Typography className={'card-discount'}>Get up to {product.discount}% off Today Only!</Typography>
 						<img
@@ -20,7 +22,8 @@ const ProductCard = ({product}) => {
 							style={{
 								width: '100%',
 								height: '370px',
-								marginBottom: '35px'
+								marginBottom: '35px',
+								objectFit: 'contain'
 							}}
 						/>
 					</Box>
@@ -32,9 +35,9 @@ const ProductCard = ({product}) => {
 				</Box>
 				
 				<Box sx={cardOverlay}>
-					<ProductIcons/>
+					<ProductIcons product={product}/>
 					<Price discount={product.discount} old_price={product.price}/>
-					<BasicRating rating={''} value={product.rating}/>
+					<BasicRating rating={''} value={product.rating} product={product}/>
 				</Box>
 			</Box>
 		</Box>

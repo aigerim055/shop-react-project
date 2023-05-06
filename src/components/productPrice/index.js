@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {Typography} from "@mui/material";
 
 const Price = (props) => {
 	
-	const discount_price = Number(props.old_price) - (Number(props.old_price) / 100 * Number(props.discount))
+	const discount_price = useMemo(() => {
+		return Number(props.old_price) - (Number(props.old_price) / 100 * Number(props.discount))
+	}, [props.old_price, props.discount])
 	
 	return (
 		<>

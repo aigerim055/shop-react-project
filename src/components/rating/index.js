@@ -1,9 +1,18 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
+import {useDispatch} from "react-redux";
+import {editRating} from "../../redux/action/productAction";
 
 export default function BasicRating(props) {
-	const [value, setValue] = React.useState();
+	
+	const dispatch = useDispatch()
+	
+	const handleEditRating = (object, new_rating) => {
+		const new_value = {...object, rating: new_rating}
+		dispatch(editRating(new_value))
+	}
+	
 	
 	return (
 		<Box
@@ -16,12 +25,12 @@ export default function BasicRating(props) {
 					<Rating name="read-only" value={props.value} readOnly />
 					:
 					<Rating
-						// name="simple-controlled"
 						defaultValue={props.value}
-						value={props.value}
-						// onChange={(event, newValue) => {
-						// 	setValue(newValue);
-						// }}
+						// value={props.value}
+						onChange={(event, newValue) => {
+							handleEditRating(props.product, newValue)
+							;
+						}}
 					/>
 			}
 		</Box>

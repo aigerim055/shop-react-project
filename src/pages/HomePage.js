@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Header from "../components/header";
 import ProductCard from "../components/productCard";
 import {useSelector} from "react-redux";
 
 const HomePage = () => {
 	
-	const products = useSelector(state => state.products) // получает данные
+	const products = useSelector(state => state.products)
+	
+	
 	
 	return (
 		<>
