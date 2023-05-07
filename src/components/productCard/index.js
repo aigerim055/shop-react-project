@@ -15,7 +15,12 @@ const ProductCard = ({product}) => {
 					className={'cardDesc'}
 				>
 					<Box>
-						<Typography className={'card-discount'}>Get up to {product.discount}% off Today Only!</Typography>
+						{
+							product.discount ?
+								<Typography className={'card-discount'}>Get up to {product.discount}% off Today Only!</Typography>
+								:
+								null
+						}
 						<img
 							src={product.img}
 							alt=""
@@ -29,14 +34,24 @@ const ProductCard = ({product}) => {
 					</Box>
 					<div className="card-desc">
 						<Typography variant='h6'>{product.title}</Typography>
-						<Price discount={product.discount} old_price={product.price}/>
+						{
+							product.discount ?
+								<Price discount={product.discount} old_price={product.price}/>
+								:
+								<Typography sx={cardDiscountPrice} variant='h6'>$ {product.price}</Typography>
+						}
 						<BasicRating rating={'read'} value={product.rating}/>
 					</div>
 				</Box>
 				
 				<Box sx={cardOverlay}>
 					<ProductIcons product={product}/>
-					<Price discount={product.discount} old_price={product.price}/>
+					{
+						product.discount ?
+							<Price discount={product.discount} old_price={product.price}/>
+							:
+							<Typography sx={cardDiscountPrice} variant='h6'>$ {product.price}</Typography>
+					}
 					<BasicRating rating={''} value={product.rating} product={product}/>
 				</Box>
 			</Box>
@@ -55,7 +70,7 @@ const cardOverlay = {
 	position: 'absolute',
 	padding: '35px',
 	marginTop: '460px',
-	bottom: '-230px',
+	bottom: '-250px',
 }
 
 const card = {
@@ -70,5 +85,13 @@ const card = {
 	},
 }
 
+
+const cardDiscountPrice = {
+	fontWeight: "500",
+	fontSize: "16px",
+	lineHeight: "27px",
+	color: "#030D15",
+	padding: '20px 0 '
+}
 
 export default ProductCard;
